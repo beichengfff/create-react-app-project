@@ -1,0 +1,110 @@
+      .x-note-icon {
+        cursor: pointer;
+        margin-left: 8px;
+        background-color: #1DA1F2 !important;
+        color: white !important;
+        font-size: 18px !important;
+        vertical-align: middle;
+        z-index: 10000 !important;
+        display: inline !important;
+        padding: 2px 6px !important;
+        border-radius: 4px !important;
+      }
+      
+      .x-note-text {
+        margin-left: 8px;
+        background-color: #1DA1F2 !important;
+        color: white !important;
+        font-size: 16px !important;
+        vertical-align: middle;
+        z-index: 10000 !important;
+        display: inline !important;
+        padding: 2px 6px !important;
+        border-radius: 4px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+        transition: all 0.3s ease;
+      }
+      
+      .x-note-text:hover {
+        max-width: 500px;
+        overflow: visible;
+        white-space: normal;
+        position: relative;
+        z-index: 10001;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      
+      .x-note-popup {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        z-index: 10001 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-width: 300px;
+      }
+      
+      .x-note-username {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .x-note-input {
+        width: 100%;
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      .x-note-button-container {
+        display: flex;
+        gap: 8px;
+      }
+      
+      .x-note-save-button {
+        padding: 6px 12px;
+        background-color: #1DA1F2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      
+      .x-note-save-button:hover {
+        background-color: #0c84c9;
+      }
+      
+      .x-note-cancel-button {
+        padding: 6px 12px;
+        background-color: #e0245e;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      
+      .x-note-cancel-button:hover {
+        background-color: #c81e4f;
+      }
+      
+      /* 共同关注区域特殊样式 */
+      div[aria-label="可能认识的人"] .x-note-text,
+      div[aria-label="People you might know"] .x-note-text {
+        display: block !important;
+        margin-left: 0;
+        margin-top: 4px;
+        max-width: 100%;
+        white-space: normal;
+        overflow: visible;
+      }

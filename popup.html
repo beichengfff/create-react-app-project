@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Notes</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 320px;
+      background-color: #fff;
+      color: #14171a;
+    }
+    
+    .header {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e1e8ed;
+      display: flex;
+      align-items: center;
+    }
+    
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      flex-grow: 1;
+      color: #1da1f2;
+    }
+    
+    .search-container {
+      padding: 8px 16px;
+      border-bottom: 1px solid #e1e8ed;
+      position: relative;
+    }
+    
+    #searchInput {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #e1e8ed;
+      border-radius: 50px;
+      font-size: 14px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    
+    #searchInput:focus {
+      border-color: #1da1f2;
+      box-shadow: 0 0 0 1px rgba(29, 161, 242, 0.3);
+    }
+    
+    .stats-container {
+      display: flex;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e1e8ed;
+      font-size: 14px;
+    }
+    
+    .stat-item {
+      flex: 1;
+    }
+    
+    .stat-value {
+      font-weight: bold;
+      font-size: 16px;
+      color: #1da1f2;
+    }
+    
+    .stat-label {
+      color: #657786;
+    }
+    
+    .actions-container {
+      display: flex;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e1e8ed;
+    }
+    
+    .action-btn {
+      flex: 1;
+      background-color: #1da1f2;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 0;
+      margin: 0 4px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .action-btn:hover {
+      background-color: #1a91da;
+    }
+    
+    .action-btn:active {
+      background-color: #1681bf;
+    }
+    
+    #searchResults {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .result-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e1e8ed;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .result-item:hover {
+      background-color: #f5f8fa;
+    }
+    
+    .result-user {
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #1da1f2;
+    }
+    
+    .result-note {
+      font-size: 14px;
+      color: #14171a;
+      word-break: break-word;
+    }
+    
+    #importInput {
+      display: none;
+    }
+    
+    .footer {
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #657786;
+      text-align: center;
+    }
+    
+    .empty-state {
+      padding: 30px 15px;
+      text-align: center;
+      color: #657786;
+      font-size: 14px;
+      background: white;
+      border-bottom: 1px solid #e1e8ed;
+    }
+    
+    /* 深色模式支持 */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #15202b;
+        color: #fff;
+      }
+      
+      .header, .search-container, .stats-container, .actions-container, .result-item {
+        border-color: #38444d;
+      }
+      
+      #searchInput {
+        background-color: #192734;
+        border-color: #38444d;
+        color: #fff;
+      }
+      
+      .stat-label {
+        color: #8899a6;
+      }
+      
+      .result-item:hover {
+        background-color: #192734;
+      }
+      
+      .result-note {
+        color: #fff;
+      }
+      
+      .empty-state {
+        background: #192734;
+        color: #8899a6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">Twitter Notes</div>
+  </div>
+  
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="搜索用户名或备注内容...">
+  </div>
+  
+  <div class="stats-container">
+    <div class="stat-item">
+      <div class="stat-value" id="totalNotes">0</div>
+      <div class="stat-label">已备注</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="todayNotes">0</div>
+      <div class="stat-label">今日备注</div>
+    </div>
+  </div>
+  
+  <div class="actions-container">
+    <button class="action-btn" id="exportBtn">导出备注</button>
+    <button class="action-btn" id="importBtn">导入备注</button>
+    <input type="file" id="importInput" accept=".txt,.json">
+  </div>
+  
+  <div id="searchResults">
+    <!-- 搜索结果将在这里显示 -->
+  </div>
+  
+  <div class="footer">
+    Twitter Notes - 帮助你记录推特用户信息
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
